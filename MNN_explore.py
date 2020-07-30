@@ -30,6 +30,8 @@ new_features = [5, 7]
 # input of y
 # defau;t k value of 3 which can be changed
 # TODO incorporate k = (len(data)+1) if (len(data)%2==0) else len(data)+2 below
+
+
 def K_N_N(x, y, k=3):
 
     # if user tries to set k less than total voting groups warn user
@@ -82,14 +84,22 @@ def K_N_N(x, y, k=3):
     # most common returns array of list so index to the good stuff
     vote_result = Counter(votes).most_common(1)[0][0]
 
+    # confidence is how sure that the result is in the right group
+    # if 100% of the votes are for a group there is higher confidence in accuracy
+    # number of votes divided by number of groups k gives confidence percentage
+    confidence = Counter(votes).most_common(1)[0][1] / k
+
     # vote_result returns a list of a tuple ie. [('r',3)]
     # print(Counter(votes).most_common(1))
 
-    return vote_result
+    # print(vote_result)
+    # print(confidence)
+    return vote_result, confidence
 
 
-result = K_N_N(dataset, new_features, k=3)
-print(result)
+# practice on a single item.
+# result, confidence = K_N_N(dataset, new_features, k=3)
+# print(result, confidence)
 
 
 # lets graph this up a little bit
@@ -104,7 +114,7 @@ print(result)
 # 11. Class:                        (2 for benign, 4 for malignant)
 
 
-df = pd.read_csv("breast_cancer_data.txt")
+df = pd.read_csv("data/breast_cancer_data.txt")
 df.replace("?", -99999, inplace=True)
 df.drop(["id"], 1, inplace=True)
 
@@ -147,9 +157,11 @@ total = 0
 
 for group in test_set:
     for data in test_set[group]:
-        vote = K_N_N(train_set, data, k=5)
+        vote, confidence = K_N_N(train_set, data, k=5)
         if group == vote:
             correct += 1
+        else:
+            print(confidence)
         total += 1
 print("Accuracy:", correct / total)
 
