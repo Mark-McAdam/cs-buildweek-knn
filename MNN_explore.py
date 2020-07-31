@@ -32,7 +32,7 @@ new_features = [5, 7]
 # TODO incorporate k = (len(data)+1) if (len(data)%2==0) else len(data)+2 below
 
 
-def K_N_N(x, y, k=3):
+def M_N_N(x, y, k=3):
 
     # if user tries to set k less than total voting groups warn user
     if len(x) >= k:
@@ -157,7 +157,7 @@ total = 0
 
 for group in test_set:
     for data in test_set[group]:
-        vote, confidence = K_N_N(train_set, data, k=5)
+        vote, confidence = M_N_N(train_set, data, k=5)
         if group == vote:
             correct += 1
         else:

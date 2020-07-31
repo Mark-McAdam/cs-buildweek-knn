@@ -4,8 +4,7 @@
 # implement My Nearest Neighbors
 class MNN:
     """
-    My Nearest Neighbors all live euclidian closest to me
-    Please use a dataframe with labels in column 0 
+    My Nearest Neighbors all live closest to me
     to avoid unexpected results
     """
 
