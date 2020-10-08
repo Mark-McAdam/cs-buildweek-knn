@@ -1,6 +1,6 @@
-#### ! cs-buildweek-knn !
-
 # My Nearest Neighbors 
+Implementation of Scikit-Learn K-Nearest Neighbors from scratch in python. 
+
 ## they all live closest to me
 
 Closest to me in terms of euclidean distance. 
@@ -12,15 +12,15 @@ Distance to my neighbors would be harder to calculate if I lived in an apartment
 Distance abstracted farther to other dimensions is where my analogy starts to fall apart. Consider that the complexity of the problem increases as the dimensionality of the problem does. 
 
 Why does dimensionality matter ? The dataset I am working with has 9 features. 
-clump_thickness,
-uniform_cell_size,
-uniform_cell_shape,
-marginal_adhesion,
-single_epi_cell_size,
-bare_nuclei,
-bland_chromation,
-normal_nucleoli,
-mitoses
+- clump_thickness,
+- uniform_cell_size,
+- uniform_cell_shape,
+- marginal_adhesion,
+- single_epi_cell_size,
+- bare_nuclei,
+- bland_chromation,
+- normal_nucleoli,
+- mitoses
 
 class - 2 Benign 4 Malignant
 
